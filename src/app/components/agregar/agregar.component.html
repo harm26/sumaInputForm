@@ -1,0 +1,68 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="m-5" *ngFor="let can of cantidadArray; let i = index">
+          <label class="mr-2">{{ i + 1 }} {{ can.nombre }}</label>
+          <label class="mr-2"> Precio/unit $ {{ can.precio }}</label>
+          <button
+            type="button"
+            class="btn btn button btn-outline-primary"
+            (click)="agregar(i)"
+          >
+            agregar
+          </button>
+        </div>
+        <label class="mr-2">Total</label>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Accion</th>
+              <th scope="col">nombre</th>
+              <th scope="col">cantidad</th>
+              <th scope="col">precio unit</th>
+              <th scope="col">sub-total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let canti of cantidadArray2; let i = index">
+              <td>
+                <button class="btn btn-button btn-outline-danger">
+                  Borrar
+                </button>
+              </td>
+              <td>{{ canti.nombre }}</td>
+              <th>
+                <input
+                  type="number"
+                  style="width: 50px"
+                  value="1"
+                  #valor
+                  formControlName="cantidad"
+                />
+              </th>
+
+              <td>{{ canti.precio }}</td>
+              <td>
+                <input
+                  type="number"
+                  name="sub-total"
+                  formControlName= "subTotal"
+                  placeholder="{{ canti.precio * valor.value }}"
+                  readonly
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="4"></td>
+              <td><input type="number" readonly /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

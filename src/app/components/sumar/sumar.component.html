@@ -1,0 +1,23 @@
+
+
+<form [formGroup]="formulario">
+  <div>
+    <button
+    type="button"
+    class="btn btn-button btn-outline-primary"
+    (click)="add()">
+    Add campos
+  </button>
+  </div>
+  <div formArrayName="cantidades" *ngFor="let can of getCantidad.controls; let i = index">
+    <div [formGroupName]="i" >
+      <div>
+        Cantidad {{i+1}}
+        <input type="number" formControlName="cantidad" />
+      </div>
+      
+    </div>
+    
+  </div>
+  {{cambio |json}}
+</form>

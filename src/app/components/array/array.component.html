@@ -1,0 +1,21 @@
+<h1>hola</h1>
+
+<form [formGroup]="formulario">
+  <div >
+    <a class="btn btn-primary" (click)="add()">Add</a>
+  </div>
+
+  <div
+    formArrayName="pruebas"
+    *ngFor="let prueba of getPruebas.controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      <div >
+        Pruebas
+
+        <input type="number"  formControlName="prueba" />
+      </div>
+    </div>
+  </div>
+
+</form>
